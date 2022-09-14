@@ -1,5 +1,5 @@
 console.log("hello from gh action");
-
+const fs = require('fs')
 const DOMAIN = process.env.DOMAIN;
 const CONNECTION_ID = process.env.CONNECTION_ID;
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -21,12 +21,12 @@ const auth0 = new ManagementClient({
 });
 
 const customScripts = {
-  change_password: require("./changePassword.js"),
-  create: require("./create.js"),
-  delete: require("./delete.js"),
-  get_user: require("./getByEmail.js"),
-  login: require("./login.js"),
-  verify: require("./verify.js"),
+  change_password: fs.readFileSync("./changePassword.js").toString(),
+  create: fs.readFileSync("./create.js").toString(),
+  delete: fs.readFileSync("./delete.js").toString(),
+  get_user: fs.readFileSync("./getByEmail.js").toString(),
+  login: fs.readFileSync("./login.js").toString(),
+  verify: fs.readFileSync("./verify.js").toString(),
 };
 
 auth0.connections.update(
