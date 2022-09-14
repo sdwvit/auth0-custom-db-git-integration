@@ -31,3 +31,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run onpush script
         run: npm run onpush
+        env:
+          ACCOUNT: ${{ secrets.ACCOUNT }}
+          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
