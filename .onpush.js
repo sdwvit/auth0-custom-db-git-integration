@@ -32,6 +32,8 @@ const customScripts = {
 auth0.connections.update(
   { id: CONNECTION_ID },
   {
-    customScripts: customScripts,
+    options: {
+      customScripts: customScripts,
+    }
   }
 );
