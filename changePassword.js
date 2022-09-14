@@ -1,4 +1,5 @@
 // this was uploaded from github
+// this update should not disable 'use my own database' flag
 function changePassword(email, newPassword, callback) {
     // This script should change the password stored for the current user in your
     // database. It is executed when the user clicks on the confirmation link
