@@ -32,6 +32,6 @@ jobs:
       - name: Run onpush script
         run: npm run onpush
         env:
-          ACCOUNT: ${{ secrets.ACCOUNT }}
+          DOMAIN: ${{ secrets.DOMAIN }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
