@@ -23,6 +23,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: npm i
+        run: npm i
+
       # Runs a single command using the runners shell
       - name: Run onpush script
         run: npm run onpush
