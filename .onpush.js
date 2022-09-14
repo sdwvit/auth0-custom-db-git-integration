@@ -28,6 +28,8 @@ auth0.connections.update(
       customScripts: customScripts,
     }
   }
-);
+).then(response => {
+  console.log('Received response: ', response);
+});
 
 console.log('Done!')
