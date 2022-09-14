@@ -24,15 +24,18 @@ const tasks = [
         login: fs.readFileSync("./login.js").toString(),
         verify: fs.readFileSync("./verify.js").toString(),
       };
+      auth0.connections.get({ id: CONNECTION_ID }).then(response => {
+        auth0.connections.update(
+            { id: CONNECTION_ID },
+            {
+              options: {
+                ...response.options,
+                customScripts: customScripts,
+              },
+            }
+        );
+      })
 
-      auth0.connections.update(
-        { id: CONNECTION_ID },
-        {
-          options: {
-            customScripts: customScripts,
-          },
-        }
-      );
     },
   },
 ];
