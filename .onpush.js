@@ -1,23 +1,15 @@
-console.log("hello from gh action");
+console.log('Running sync script');
 const fs = require('fs')
 const DOMAIN = process.env.DOMAIN;
 const CONNECTION_ID = process.env.CONNECTION_ID;
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
-console.log({
-  DOMAIN: DOMAIN ? "set" : "not set",
-  CLIENT_ID: CLIENT_ID ? "set" : "not set",
-  CLIENT_SECRET: CLIENT_SECRET ? "set" : "not set",
-});
 
 const ManagementClient = require("auth0").ManagementClient;
 const auth0 = new ManagementClient({
   domain: DOMAIN,
   clientId: CLIENT_ID,
-  clientSecret: CLIENT_SECRET,/*
-  scope: "update:connections",
-  "audience":`https://${DOMAIN}/api/v2/`,
-  "grant_type":"client_credentials"*/
+  clientSecret: CLIENT_SECRET,
 });
 
 const customScripts = {
@@ -37,3 +29,5 @@ auth0.connections.update(
     }
   }
 );
+
+console.log('Done!')
