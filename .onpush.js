@@ -1,5 +1,5 @@
-console.log('Running sync script');
-const fs = require('fs')
+console.log("Running sync script");
+const fs = require("fs");
 const DOMAIN = process.env.DOMAIN;
 const CONNECTION_ID = process.env.CONNECTION_ID;
 const CLIENT_ID = process.env.CLIENT_ID;
@@ -12,24 +12,34 @@ const auth0 = new ManagementClient({
   clientSecret: CLIENT_SECRET,
 });
 
-const customScripts = {
-  change_password: fs.readFileSync("./changePassword.js").toString(),
-  create: fs.readFileSync("./create.js").toString(),
-  delete: fs.readFileSync("./delete.js").toString(),
-  get_user: fs.readFileSync("./getByEmail.js").toString(),
-  login: fs.readFileSync("./login.js").toString(),
-  verify: fs.readFileSync("./verify.js").toString(),
-};
-
-auth0.connections.update(
-  { id: CONNECTION_ID },
+const tasks = [
   {
-    options: {
-      customScripts: customScripts,
-    }
-  }
-).then(response => {
-  console.log('Received response: ', response);
+    name: "Syncing custom DB scripts",
+    fn: function syncCustomScripts() {
+      const customScripts = {
+        change_password: fs.readFileSync("./changePassword.js").toString(),
+        create: fs.readFileSync("./create.js").toString(),
+        delete: fs.readFileSync("./delete.js").toString(),
+        get_user: fs.readFileSync("./getByEmail.js").toString(),
+        login: fs.readFileSync("./login.js").toString(),
+        verify: fs.readFileSync("./verify.js").toString(),
+      };
+
+      auth0.connections.update(
+        { id: CONNECTION_ID },
+        {
+          options: {
+            customScripts: customScripts,
+          },
+        }
+      );
+    },
+  },
+];
+
+tasks.forEach((task) => {
+  console.log(task.name);
+  task.fn();
 });
 
-console.log('Done!')
+console.log("Done!");
