@@ -1,4 +1,5 @@
 // this was uploaded from github
+// see details at https://github.com/sdwvit/auth0-custom-db-git-integration
 function login(email, password, callback) {
     // This script should authenticate a user against the credentials stored in
     // your database.
