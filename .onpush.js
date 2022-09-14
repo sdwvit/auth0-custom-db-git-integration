@@ -16,7 +16,7 @@ const auth0 = new ManagementClient({
   clientId: CLIENT_ID,
   clientSecret: CLIENT_SECRET,
   scope: "update:connections",
-  "audience":`${DOMAIN}/api/v2/`,
+  "audience":`https://${DOMAIN}/api/v2/`,
   "grant_type":"client_credentials"
 });
 
