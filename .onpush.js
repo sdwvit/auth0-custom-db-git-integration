@@ -14,10 +14,10 @@ const ManagementClient = require("auth0").ManagementClient;
 const auth0 = new ManagementClient({
   domain: DOMAIN,
   clientId: CLIENT_ID,
-  clientSecret: CLIENT_SECRET,
+  clientSecret: CLIENT_SECRET,/*
   scope: "update:connections",
   "audience":`https://${DOMAIN}/api/v2/`,
-  "grant_type":"client_credentials"
+  "grant_type":"client_credentials"*/
 });
 
 const customScripts = {
