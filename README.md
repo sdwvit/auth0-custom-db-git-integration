@@ -1,6 +1,7 @@
 # auth0-custom-db-git-integration
 
 Custom db scripts syncronization with dashboard via Auth0 management api.
+For specific usecase. For general usecases, use https://github.com/auth0/auth0-deploy-cli .
 
 ### Prerequisites
 
